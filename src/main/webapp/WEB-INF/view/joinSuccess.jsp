@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>╟║ют ©о╥А</title>
+<meta charset="utf-8">
+<title>Й╟─Л·┘ Л≥└Кё▄</title>
 </head>
 <body>
-${param.name}╢т, х╦©Ь ╟║ют©║ ╪╨╟Ьгъ╫ю╢о╢ы. }
+${param.name}К▀≤, М ▄Л⌡░ Й╟─Л·┘Л≈░ Л└╠ЙЁ╣М√┬Л┼╣К▀┬К▀╓. }
 </body>
 </html>
