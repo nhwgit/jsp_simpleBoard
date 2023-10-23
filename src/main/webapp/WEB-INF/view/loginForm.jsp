@@ -20,5 +20,7 @@
 </p>
 <input type="submit" value="로그인">
 </form>
+<br>
+<a href = "join.do">회원가입</a>
 </body>
 </html>

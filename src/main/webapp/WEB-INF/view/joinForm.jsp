@@ -18,7 +18,7 @@
 	<c:if test="${errors.name}"> 이름을 입력하시오. </c:if>
 	</p>
 	<p>
-	암호:<br><input type="text" name="passWord">
+	암호:<br><input type="text" name="password">
 	<c:if test="${errors.password}">암호를 입력하세요.</c:if>	
 	</p>
 	<p>

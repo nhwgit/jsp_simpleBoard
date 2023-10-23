@@ -43,13 +43,24 @@ public class MemberDao {
 	
 	public void insert(Connection conn, Member mem) throws SQLException {
 		try(PreparedStatement pstmt =
-				conn.prepareStatement("insert into member values(?,?,?,?)")) {
+				conn.prepareStatement("insert into member values(?,?,?,?,?)")) {
 			pstmt.setString(1,  mem.getId());
 			pstmt.setString(2,  mem.getName());
 			pstmt.setString(3, mem.getPassword());
 			pstmt.setInt(4, mem.getGrade());
 			pstmt.setTimestamp(5, new Timestamp(mem.getRegDate().getTime()));
+			pstmt.executeUpdate();
+		}	
+	}
+	
+	public void update(Connection conn, Member member) throws SQLException {
+		try(PreparedStatement pstmt = conn.prepareStatement(
+				"update member set name = ?, password = ? where id = ?")) {
+			pstmt.setString(1, member.getName());
+			pstmt.setString(2,  member.getPassword());;
+			pstmt.setString(3, member.getId());
+			pstmt.executeUpdate();
+			
 		}
-		
 	}
 }

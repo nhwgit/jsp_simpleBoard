@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>가입 완료</title>
+<title>암호 변경</title>
 </head>
 <body>
-${param.name}님, 회원 가입에 성공했습니다.
+암호를 변경했습니다.
 </body>
 </html>
