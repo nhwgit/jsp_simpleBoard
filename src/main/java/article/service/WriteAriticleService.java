@@ -34,7 +34,7 @@ public class WriteAriticleService {
 			
 			ArticleContent savedContent = contentDao.insert(conn,  content);
 			if(savedContent == null) {
-				throw new RuntimeException("fail to insert article+content");
+				throw new RuntimeException("fail to insert article_content");
 			}
 			
 			conn.commit();
