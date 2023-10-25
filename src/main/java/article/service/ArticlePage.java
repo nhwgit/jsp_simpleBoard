@@ -25,6 +25,8 @@ public class ArticlePage {
 			totalPages = total/size;
 			if(total % size > 0) totalPages++;
 		}
+		if(currentPage <1 || currentPage > totalPages ) currentPage = 1;
+		
 		int modVal = currentPage % PAGE_BAR_SIZE;
 		startPage = currentPage / PAGE_BAR_SIZE * PAGE_BAR_SIZE + 1;
 		if(modVal == 0) startPage -= PAGE_BAR_SIZE;

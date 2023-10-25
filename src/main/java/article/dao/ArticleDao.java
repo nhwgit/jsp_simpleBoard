@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare;
+
 import article.model.Article;
 import article.model.Writer;
 import jdbc.JdbcUtil;
@@ -89,6 +91,46 @@ public class ArticleDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public Article selectById(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(
+					"select * from article where article_no = ?");
+			pstmt.setInt(1,  no);
+			rs = pstmt.executeQuery();
+			Article article = null;
+			if(rs.next()) {
+				article = convertArticle(rs);
+			}
+			return article;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public void increaseReadCount(Connection conn, int no) throws SQLException {
+		try (PreparedStatement pstmt = 
+				conn.prepareStatement(
+					"update article set read_cnt = read_cnt + 1 " +
+							"where article_no = ?")) {
+			pstmt.setInt(1,  no);
+			pstmt.executeUpdate();
+		}
+	}
+	
+	public int update(Connection conn, int no, String title) throws SQLException {
+		try(PreparedStatement pstmt = 
+				conn.prepareStatement(
+						"update article set title = ?, moddate = now() "+
+						"where article_no = ?")) {
+			pstmt.setString(1,  title);
+			pstmt.setInt(2, no);
+			return pstmt.executeUpdate();
 		}
 	}
 	
