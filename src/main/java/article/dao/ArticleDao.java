@@ -58,6 +58,15 @@ public class ArticleDao {
 		}
 	}
 	
+	public void delete(Connection conn, int no) throws SQLException {
+		try(PreparedStatement pstmt = conn.prepareStatement(
+				"delete from article " +
+				"where article_no = ?")) {
+			pstmt.setInt(1,  no);
+			pstmt.executeUpdate();
+		}
+	}
+	
 	public int selectCount(Connection conn) throws SQLException {
 		Statement stmt = null;
 		ResultSet rs = null;

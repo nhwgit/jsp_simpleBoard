@@ -12,10 +12,12 @@
 	${authUser.name}님, 안녕하세요.
 	<a href="logout.do">[로그아웃]</a>
 	<a href="changePwd.do">[암호변경]</a>
+	<a href="article/list.do">[게시판]</a>
 </c:if>
 <c:if test="${empty authUser}">
 	<a href="join.do">[회원가입]</a>
 	<a href="login.do"> [로그인]</a>
+	<a href="article/list.do">[게시판]</a>
 </c:if>
 </body>
 </html>

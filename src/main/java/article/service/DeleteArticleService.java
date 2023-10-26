@@ -7,20 +7,17 @@ import article.dao.ArticleContentDao;
 import article.dao.ArticleDao;
 import article.model.Article;
 import article.util.PermissionChecker;
+import article.util.StringUtil;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 
-public class ModifyArticleService {
+public class DeleteArticleService {
 	private ArticleDao articleDao = new ArticleDao();
 	private ArticleContentDao contentDao = new ArticleContentDao();
 	
-	public void modify(ModifyRequest modReq) {
+	public void delete(String userId, int articleNumber) {
 		Connection conn = null;
 		try {
-			int articleNumber = modReq.getArticleNumber();
-			String userId = modReq.getUserId();
-			String title = modReq.getTitle();
-			String content = modReq.getContent();
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
@@ -29,8 +26,8 @@ public class ModifyArticleService {
 			if(!PermissionChecker.canModify(userId, article))
 				throw new PermissionDeniedException();
 			
-			articleDao.update(conn, articleNumber, title);
-			contentDao.update(conn, articleNumber, content);
+			contentDao.delete(conn, articleNumber);
+			articleDao.delete(conn, articleNumber);
 			conn.commit();
 			
 		} catch(SQLException e) {
