@@ -8,7 +8,7 @@
 </head>
 <body>
 게시글을 수정했습니다. <br>
-${ctxPath = pageContext.request.contextPath ; "}
+${ctxPath = pageContext.request.contextPath ; ""}
 
 <a href="${ctxPath}/article/list.do">[게시글목록보기]</a>
 

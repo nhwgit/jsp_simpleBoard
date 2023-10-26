@@ -19,6 +19,7 @@
 	내용:<br>
 	<textarea name="content" rows="5" cols="30">${modReq.content}</textarea>
 </p>
+	<input type="hidden" name="no" value= "${modReq.articleNumber}">
 <input type="submit" value="글 수정">
 </form>
 </body>

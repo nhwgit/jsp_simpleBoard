@@ -41,7 +41,6 @@ public class ModifyArticleHandler implements CommandHandler {
 		try {
 			String noVal = req.getParameter("no");
 			int no = Integer.parseInt(noVal);
-			
 			ArticleData articleData = readService.getArticle(no, false);
 			User authUser = (User)req.getSession().getAttribute("authUser");
 			ModifyRequest modReq = new ModifyRequest(authUser.getId(), no,
@@ -63,12 +62,10 @@ public class ModifyArticleHandler implements CommandHandler {
 	throws Exception {
 		String noVal = req.getParameter("no");
 		int no = Integer.parseInt(noVal);
-		
-		ArticleData articleData = readService.getArticle(no, false);
 		User authUser = (User)req.getSession().getAttribute("authUser");
 		ModifyRequest modReq = new ModifyRequest(authUser.getId(), no,
-				articleData.getArticle().getTitle(),
-				articleData.getContent());
+				req.getParameter("title"),
+				req.getParameter("content"));
 		req.setAttribute("modReq",  modReq);
 		
 		Map<String, Boolean> errors = new HashMap<>();
